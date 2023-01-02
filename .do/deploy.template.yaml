@@ -1,0 +1,45 @@
+
+spec:
+  name: grade-alert
+  services:
+    - name: grade-alert
+      git:
+        branch: main
+        repo_clone_url: https://github.com/rm03/grade-alert.git
+      envs:
+      - key: WDM_LOG
+        scope: RUN_TIME
+        value: "logging.NOTSET"
+      - key: WDM_LOCAL
+        scope: RUN_TIME
+        value: "1"
+      - key: PENNKEY
+        scope: RUN_TIME
+        type: SECRET
+      - key: PENNKEY_PASSWORD
+        scope: RUN_TIME
+        type: SECRET
+      - key: TWILIO_ACCOUNT_SID
+        scope: RUN_TIME
+        type: SECRET
+      - key: TWILIO_AUTH_TOKEN
+        scope: RUN_TIME
+        type: SECRET
+      - key: TWILIO_NUMBER
+        scope: RUN_TIME
+        type: SECRET
+      - key: ALERT_NUMBER
+        scope: RUN_TIME
+        type: SECRET
+      - key: EMAIL
+        scope: RUN_TIME
+        type: SECRET
+      - key: EMAIL_PASSWORD
+        scope: RUN_TIME
+        type: SECRET
+      - key: ALERT_EMAIL
+        scope: RUN_TIME
+        type: SECRET
+      - key: SEND_GRADE
+        scope: RUN_TIME
+        value: "0"
