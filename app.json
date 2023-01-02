@@ -24,36 +24,36 @@
             "value": "placeholder"
         },
         "TWILIO_ACCOUNT_SID": {
-            "value": "placeholder",
+            "value": "",
             "required": false
         },
         "TWILIO_AUTH_TOKEN": {
-            "value": "placeholder",
+            "value": "",
             "required": false
         },
         "TWILIO_NUMBER": {
             "description": "Your Twilio phone number (ex. +18887776666)",
-            "value": "placeholder",
+            "value": "",
             "required": false
         },
         "ALERT_NUMBER": {
             "description": "Your phone number (ex. +18887776666)",
-            "value": "placeholder",
+            "value": "",
             "required": false
         },
         "EMAIL": {
             "description": "The email address from which the notification will be sent",
-            "value": "placeholder",
+            "value": "",
             "required": false
         },
         "EMAIL_PASSWORD": {
             "description": "The app password for the email",
-            "value": "placeholder",
+            "value": "",
             "required": false
         },
         "ALERT_EMAIL": {
             "description": "The email to which the notification will be sent",
-            "value": "placeholder",
+            "value": "",
             "required": false
         },
         "SEND_GRADE": {
