@@ -1,0 +1,64 @@
+{
+    "name": "Grade Alert",
+    "description": "A script that notifies Penn students via email and/or SMS when their final grades are posted on Path@Penn.",
+    "repository": "https://github.com/rm03/grade-alert",
+    "buildpacks": [
+        {
+            "url": "heroku/python"
+        },
+        {
+          "url": "https://github.com/heroku/heroku-buildpack-google-chrome"
+        }
+    ],
+    "env": {
+        "WDM_LOG": {
+          "value": "logging.NOTSET"
+        },
+        "WDM_LOCAL": {
+          "value": "1"
+        },
+        "PENNKEY": {
+            "value": "placeholder"
+        },
+        "PENNKEY_PASSWORD": {
+            "value": "placeholder"
+        },
+        "TWILIO_ACCOUNT_SID": {
+            "value": "placeholder",
+            "required": false
+        },
+        "TWILIO_AUTH_TOKEN": {
+            "value": "placeholder",
+            "required": false
+        },
+        "TWILIO_NUMBER": {
+            "description": "Your Twilio phone number (ex. +18887776666)",
+            "value": "placeholder",
+            "required": false
+        },
+        "ALERT_NUMBER": {
+            "description": "Your phone number (ex. +18887776666)",
+            "value": "placeholder",
+            "required": false
+        },
+        "EMAIL": {
+            "description": "The email address from which the notification will be sent",
+            "value": "placeholder",
+            "required": false
+        },
+        "EMAIL_PASSWORD": {
+            "description": "The app password for the email",
+            "value": "placeholder",
+            "required": false
+        },
+        "ALERT_EMAIL": {
+            "description": "The email to which the notification will be sent",
+            "value": "placeholder",
+            "required": false
+        },
+        "SEND_GRADE": {
+            "description": "Denotes whether the final grade should be sent in the notification (yes = 1, no = 0)",
+            "value": "0"
+        }
+    }
+}

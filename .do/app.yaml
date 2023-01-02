@@ -1,8 +1,0 @@
-name: grade-alert
-services:
-- environment_slug: python
-  github:
-    branch: main
-    deploy_on_push: true
-    repo: rm03/grade-alert
-  name: grade-alert
