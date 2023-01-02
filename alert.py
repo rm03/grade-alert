@@ -47,13 +47,12 @@ class EmailAlert():
                 server.login(os.environ.get('EMAIL'), os.environ.get('EMAIL_PASSWORD'))
             except SMTPAuthenticationError:
                 logging.error('Error logging into email: invalid credentials')
-                return
-
-            try:
-                server.send_message(msg)
-                logging.info('Successfully sent email notification')
-            except SMTPRecipientsRefused:
-                logging.error('Error sending email')
+            else:
+                try:
+                    server.send_message(msg)
+                    logging.info('Successfully sent email notification')
+                except SMTPRecipientsRefused:
+                    logging.error('Error sending email')
 
 class SMSAlert():
     def __init__(self, phone_number, data):

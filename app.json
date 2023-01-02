@@ -60,5 +60,11 @@
             "description": "Denotes whether the final grade should be sent in the notification (yes = 1, no = 0)",
             "value": "0"
         }
+    },
+    "formation": {
+        "worker": {
+          "quantity": 1,
+          "size": "standard-1x"
+        }
     }
 }

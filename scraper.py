@@ -130,28 +130,35 @@ class Scraper():
             'authtoken': self.auth_token,
         }
 
-        response = requests.post('https://courses.upenn.edu/api/',
-                                params=params,
-                                headers=headers,
-                                data=data).text
+        response = ''
+        try:
+            response = requests.post('https://courses.upenn.edu/api/',
+                                    params=params,
+                                    headers=headers,
+                                    data=data).text
+        except requests.Timeout:
+            logging.error('Request timed out')
+        except requests.ConnectionError:
+            logging.error('Error connecting to Courses@Penn API')
+        else:
+            grades = json.loads(response[10:len(response) - 1])
+            if 'error' in grades:
+                logging.info('Session timed out, refreshing...')
+                self.refresh_auth()
+                return self.query_grades()
+            
+            curr_grades = grades['grades'][get_semester_code()]
+            curr_released = {course['title'] for course in curr_grades}
 
-        grades = json.loads(response[10:len(response) - 1])
-        if 'error' in grades:
-            logging.info('Session timed out, refreshing...')
-            self.refresh_auth()
-            return self.query_grades()
-        
-        curr_grades = grades['grades'][get_semester_code()]
-        curr_released = {course['title'] for course in curr_grades}
+            if self.released and self.released != curr_released:
+                new_courses = curr_released - self.released
+                logging.info(f'{new_courses} just released grades')
+                self.released = curr_released
+                return [course for course in curr_grades if course['title'] in new_courses], get_semester_code()
 
-        if self.released and self.released != curr_released:
-            new_courses = curr_released - self.released
-            logging.info(f'{new_courses} just released grades')
             self.released = curr_released
-            return [course for course in curr_grades if course['title'] in new_courses], get_semester_code()
-
-        self.released = curr_released
-        logging.info(f'Courses with grades released: {self.released}')
+            logging.info(f'Courses with grades released: {self.released}')
+        
         return None, None
 
 
