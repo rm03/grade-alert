@@ -66,5 +66,8 @@
           "quantity": 1,
           "size": "standard-1x"
         }
+    },
+    "scripts": {
+        "postdeploy": "mkdir session"
     }
 }

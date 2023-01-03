@@ -4,7 +4,7 @@ Unfortunately, the new Path@Penn system no longer informs students when professo
 
 ## Setup
 
-Clone this repo and run `pip install -r requirements.txt` to install the dependencies. Google Chrome must also be installed on your machine.
+Clone this repo and run `pip install -r requirements.txt & mkdir session` to install the dependencies. Google Chrome must also be installed on your machine.
 
 You will also need to set the following environment variables:
 ```
